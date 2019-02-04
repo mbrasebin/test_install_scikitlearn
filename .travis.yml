@@ -1,0 +1,26 @@
+dist: xenial
+
+before_install:
+  - sudo apt update
+  - sudo apt install python-software-properties
+  - pip install --upgrade pip
+  - sudo apt install python3-tk
+  - sudo apt install xvfb
+  
+language: python
+
+python:
+  - "3.5"
+virtualenv:
+  system_site_packages: true
+
+before_script:
+  - which qgis
+  - export QGIS_PREFIX_PATH=/usr
+  - export PYTHONPATH=/home/travis/.local/lib/python3.5/site-packages:/usr/lib/python3/dist-packages:${QGIS_PREFIX_PATH}/share/qgis/python/:${QGIS_PREFIX_PATH}/share/qgis/python/plugins:`pwd`
+  - echo "PYTHONPATH:" $PYTHONPATH
+  - export LD_LIBRARY_PATH=${QGIS_PREFIX_PATH}/lib
+
+script:
+  - which python
+  - xvfb-run -a python test.py
