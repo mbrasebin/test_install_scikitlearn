@@ -1,6 +1,7 @@
 dist: xenial
 
 before_install:
+  - sudo apt update
   - sudo apt install python-software-properties
   - pip install --upgrade pip
   - sudo apt install python3-tk
