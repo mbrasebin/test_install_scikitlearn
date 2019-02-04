@@ -14,7 +14,7 @@ try:
 except:
     import subprocess
     print("Try to install with subprocess")
-    subprocess.call(['pip3', 'install', '-U' ,'--user', 'scikit-learn'])
+    subprocess.call(['pip3', 'install', '-m','-U' ,'--user', 'scikit-learn'])
 
 from sklearn import datasets
 
